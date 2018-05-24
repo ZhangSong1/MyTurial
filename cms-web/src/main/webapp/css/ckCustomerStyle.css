@@ -1,0 +1,89 @@
+@CHARSET "UTF-8";
+
+div.cke_dialog_body {
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 6px;
+}
+
+div.cke_dialog_body .cke_dialog_title {
+	border-radius: 6px;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button {
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	line-height: 1.42857143;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button_ok,
+div.cke_dialog_body a.cke_dialog_ui_fileButton {
+	color: #fff;
+	background-color: #337ab7;
+	border-color: #2e6da4;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button span,
+div.cke_dialog_body a.cke_dialog_ui_fileButton span {
+	font-size: 14px;
+	font-weight: normal;
+}
+div.cke_dialog_body a.cke_dialog_ui_fileButton span {
+	color: #fff;
+	}
+div.cke_dialog_body a.cke_dialog_ui_button_ok:hover {
+	color: #fff;
+	background-color: #286090;
+	border-color: #204d74;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button_ok:focus {
+	color: #fff;
+	background-color: #286090;
+	border-color: #122b40;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button_cancel {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button_cancel:hover {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+
+div.cke_dialog_body a.cke_dialog_ui_button_cancel:focus {
+	color: #333;
+	background-color: #e6e6e6;
+	border-color: #8c8c8c;
+}
+
+a.cke_dialog_tab {
+	background: #fff;
+	border-top: 0;
+	border-right: 0;
+	border-bottom: 1px solid #d1d1d1;
+	border-left: 0;
+	margin-right: 10px;
+}
+
+a.cke_dialog_tab:focus {
+	color: inherit;
+}
+
+a.cke_dialog_tab_selected {
+	border-top: 1px solid #d1d1d1;
+	border-right: 1px solid #d1d1d1;
+	border-bottom-color: #fff;
+	border-left: 1px solid #d1d1d1;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="simpleAuthService" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+		<property name="serviceUrl" value="rmi://localhost:9090/simpleAuthService" />
+		<property name="serviceInterface" value="org.cms.auth.service.AuthService" />
+		<!-- 当连接失败时是否刷新远程调用stub -->
+		<property name="refreshStubOnConnectFailure" value="true" />
+	</bean>
+</beans:beans>

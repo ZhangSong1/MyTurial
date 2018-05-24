@@ -1,0 +1,74 @@
+@CHARSET "UTF-8";
+
+.panel.panel-primary {
+	border: 0;
+	width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.table{
+	border: 1px solid #337ab7;
+}
+table.table > tbody > tr > td {
+	position: relative;
+	width: 100px;
+	padding: 20px;
+}
+table.table > tbody > tr > td  div.shortcutItem:after{
+	content: "";
+	display: inline-block;
+	padding-bottom: 90%;
+}
+
+table.table > tbody > tr > td  div.shortcutItem{
+	background-size: contain;
+	background-repeat: no-repeat;
+	padding-left: 0px;
+	padding-right: 0px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+span.shortcut-remove {
+	top: -15px;
+    left: -12px;
+    position: absolute;
+    border: 1px solid #337ab7;
+    border-radius: 50%;
+    width: 31px;
+    height: 31px;
+}
+span.shortcut-edit {
+	top: -15px;
+    right: -12px;
+    position: absolute;
+    border-radius: 50%;
+    width: 31px;
+    height: 31px;
+}
+div.focus {
+	border:1px solid #337ab7;
+	border-radius: 10px;
+	z-index: 9998;
+		animation: editStatus 0.5s linear infinite alternate;
+   -moz-animation: editStatus 0.5s linear infinite alternate;	
+-webkit-animation: editStatus 0.5s linear infinite alternate;
+     -o-animation: editStatus 0.5s linear infinite alternate;
+}
+span.title {
+	z-index: 9998;
+}
+
+@-webkit-keyframes editStatus{
+	0%{
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(3deg);
+    }
+}
+
+
+

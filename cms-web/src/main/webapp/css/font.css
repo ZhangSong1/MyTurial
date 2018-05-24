@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'cms-blod';
+  src: url('../../fonts/Raleway-Black.ttf');
+}
+
+@font-face {
+  font-family: 'cms-thin';
+  src: url('../../fonts/Raleway-Thin.ttf');
+}
+
+@font-face {
+  font-family: 'cms-normal';
+  src: url('../../fonts/Raleway-Medium.ttf');
+}

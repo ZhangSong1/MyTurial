@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+	<persistence-unit name="myJPA" transaction-type="RESOURCE_LOCAL">
+		<!-- 在JPA配置文件中，我们指定要持久化单元名字，和事务类型，其他都将在Spring中配置。 -->
+		<class>com.persistence.entity.NewsEntity</class>
+		<class>com.persistence.entity.ShortcutEntity</class>
+		<class>com.persistence.entity.EndpointEntity</class>
+		<class>com.persistence.entity.RoleEndpointEntity</class>
+		<class>com.persistence.entity.RoleEndpointPK</class>
+		<class>com.persistence.entity.RoleEntity</class>
+		<class>com.persistence.entity.UserRoleEntity</class>
+		<class>com.persistence.entity.UserRolePK</class>
+		<class>com.persistence.entity.UserEntity</class>
+		<class>com.persistence.entity.PersistentLogin</class>
+	</persistence-unit>
+</persistence>

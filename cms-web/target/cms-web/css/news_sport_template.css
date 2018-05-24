@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+.article h1 {
+	font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+    font-weight: bold;
+    color: #000;
+    font-size: 28px;
+    line-height: 38px;
+    padding: 0 0 10px 0;
+    margin-top: -4px;
+    text-align: center;
+}
+
+.article .article-info {
+	margin-bottom: 30px;
+	height: 14px;
+}
+.article .article-info .article-time {
+	color: #999999;
+    margin-right: 20px;
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.article .article-info .article-type {
+	border-right: 1px solid #ccc;
+    padding-right: 16px;
+    height: 14px;
+}

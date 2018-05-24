@@ -1,0 +1,72 @@
+
+.background-login{
+	background-color:rgba(128, 128, 128, 0.25);
+	background:url(../image/background-login.png);
+	background-repeat: no-repeat;
+	background-size:100% auto;
+	padding-top:3%;
+	
+}
+.background-login:after{
+	content:"";
+	display:block;
+	padding-bottom:15%;
+}
+
+.form-group{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.panel{
+	max-width: 400px;
+}
+.panel-body{
+	padding: 30px;
+}
+/*hideShowPassword-toggle*/
+::-ms-reveal,
+::-ms-clear {
+  display: none !important;
+}
+
+.hideShowPassword-toggle {
+  background-color: transparent;
+  background-image: url('../vendor/hideshowpassword/images/wink.png'); /* fallback */
+  background-image: url('../vendor/hideshowpassword/images/wink.svg'), none;
+  background-position: 0 center;
+  background-repeat: no-repeat;
+  border: 2px solid transparent;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 100%;
+  height: 44px;
+  margin: 0;
+  max-height: 100%;
+  padding: 0;
+  overflow: 'hidden';
+  text-indent: -999em;
+  width: 46px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.hideShowPassword-toggle-hide {
+  background-position: -44px center;
+}
+.hideShowPassword-toggle-show {
+	border:none;
+
+	}
+	
+.hideShowPassword-toggle:hover,
+.hideShowPassword-toggle:focus {
+  background-color: transparent;
+  outline: none;
+}
+
+.input-group .hideShowPassword-wrapper input.form-control {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}

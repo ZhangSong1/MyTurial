@@ -1,0 +1,104 @@
+
+.background-login{
+	background-color:rgba(128, 128, 128, 0.25);
+	background:url(../image/background-login.png);
+	background-repeat: no-repeat;
+	background-size:100% auto;
+	padding-top:3%;
+	
+}
+.background-login:after{
+	content:"";
+	display:block;
+	padding-bottom:15%;
+}
+
+.form-group{
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 58px;
+}
+.panel{
+	max-width: 400px;
+	height: 410px;
+}
+.panel-body{
+	padding: 10px 30px;
+	
+}
+
+.input-group {
+	width: 100%;
+}
+
+.socialIcon {	
+	border-radius: 50%;
+    border: 1px solid #3b5998;
+    float: right;
+    font-size: 20px;
+    padding: 6px;
+    width: 40px;
+    height: 40px;
+    font-weight: bolder;
+    text-align: center;
+    color: #3b5998;
+}
+.socialIcon:before {
+	content: "f";
+}
+
+/*hideShowPassword-toggle*/
+::-ms-reveal,
+::-ms-clear {
+  display: none !important;
+}
+
+.hideShowPassword-wrapper {
+	position: initial !important;
+}
+
+.hideShowPassword-toggle {
+  background-color: transparent;
+  background-image: url('../vendor/hideshowpassword/images/wink.png'); /* fallback */
+  background-image: url('../vendor/hideshowpassword/images/wink.svg'), none;
+  background-position: 0 center;
+  background-repeat: no-repeat;
+  border: 2px solid transparent;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 100%;
+  height: 34px;
+  margin: 0;
+  max-height: 100%;
+  padding: 0;
+  overflow: 'hidden';
+  text-indent: -999em;
+  width: 46px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  z-index: 21;
+  top: 70% !important;
+  margin-top: -25px !important;
+}
+
+.hideShowPassword-toggle-hide {
+  background-position: -44px center;
+}
+.hideShowPassword-toggle-show {
+	border:none;
+
+	}
+	
+.hideShowPassword-toggle:hover,
+.hideShowPassword-toggle:focus {
+  background-color: transparent;
+  outline: none;
+  margin-top: -25px;
+}
+
+.input-group .hideShowPassword-wrapper input.form-control {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 4px;
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+	<http pattern="/ui/vendor/**" security="none" />
+	<http pattern="/ui/css/**" security="none" />
+	<http pattern="/ui/image/**" security="none" />
+	<http pattern="/ui/js/**" security="none" />
+	<http pattern="/ui/jsp/**" security="none" />
+	<http pattern="/ui/login" security="none" />
+	<http pattern="/ui/loginFailed" security="none" />
+	<http pattern="/ui/logout" security="none" />
+	<http auto-config="true" use-expressions="true">
+		<form-login login-page="/ui/login" default-target-url="/ui/main"
+			login-processing-url="/ui/loginAction" username-parameter="email"
+			password-parameter="password" authentication-failure-url="/ui/loginFailed" />
+		<logout logout-success-url="/ui/logout" />
+		<!-- error-if-maximum-exceeded 后登陆的账号会挤掉第一次登陆的账号 session-fixation-protection 
+			防止伪造sessionid攻击,用户登录成功后会销毁用户当前的session。 -->
+		<session-management invalid-session-url="/ui/login"
+			session-fixation-protection="none">
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
+		<!-- 当你配置了自定义的拦截器的时候，而且我拦截的请求是存放在数据库中的，所有当我输入一个请求URL时 它会去getAttributes 
+			然后把这个请求和数据库中的资源进行匹配 当匹配成功时 发现用户没有登录 然后就跳转到登录页面(个人理解)如果请求的是一个非数据库存储的URL那么就完全找不到这个请求 
+			404 -->
+		<custom-filter ref="myFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
+		<custom-filter ref="usernamePasswordAuthenticationFilter"
+			before="FORM_LOGIN_FILTER" />
+		<custom-filter ref="rememberMeFilter" position="REMEMBER_ME_FILTER" />
+		<!-- 禁用csrf机制 这个机制是用于防止黑客攻击 具体介绍参考百度百科 -->
+		<csrf disabled="true" />
+		<!--停用对匿名认证的支持 -->
+		<anonymous enabled="false" />
+		<remember-me remember-me-cookie="cms_cookies"
+			user-service-ref="myUserDetailsService" remember-me-parameter="rememberMe" />
+		<access-denied-handler error-page="/ui/loginFailed" />
+	</http>
+	<authentication-manager alias="authenticationManager"
+		erase-credentials="false">
+		<authentication-provider ref="authenticationProvider" />
+		<authentication-provider ref="rememberMeAuthenticationProvider" />
+	</authentication-provider>
+	</authentication-manager>
+	<beans:bean id="authenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<beans:property name="hideUserNotFoundExceptions"
+			value="false" />
+		<beans:property name="userDetailsService" ref="myUserDetailsService" />
+		<beans:property name="passwordEncoder" ref="passwordEncoder" />
+	</beans:bean>
+	<beans:bean id="myUserDetailsService"
+		class="com.cms.web.security.CustomUserDetailsService">
+		<beans:constructor-arg name="userService" ref="userService" />
+	</beans:bean>
+	<!-- 配置过滤器 -->
+	<beans:bean id="myFilterSecurityInterceptor"
+		class="com.cms.web.security.MyFilterSecurityInterceptor">
+		<!-- 用户是否拥有所请求资源的权限 -->
+		<beans:property name="accessDecisionManager" ref="myAccessDescisionManager" />
+		<!-- 资源与权限对应关系 -->
+		<beans:property name="fisMetadataSource" ref="mySecurityMetadataSource" />
+		<!-- 用户拥有的权限 -->
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+	</beans:bean>
+	<beans:bean id="mySecurityMetadataSource"
+		class="com.cms.web.security.MySecurityMetadataSource">
+		<beans:constructor-arg name="userService" ref="userService" />
+	</beans:bean>
+	<beans:bean id="myAccessDescisionManager"
+		class="com.cms.web.security.MyAccessDescisionManager" />
+	<beans:bean id="userService" class="com.cms.web.service.UserServiceImpl" />
+	<beans:bean id="passwordEncoder" class="com.cms.web.util.PwdEncode" />
+
+	<!-- 配置remember me功能 -->
+	<beans:bean id="usernamePasswordAuthenticationFilter"
+		class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+		<beans:property name="rememberMeServices" ref="rememberMeServices" />
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="usernameParameter" value="email" />
+		<beans:property name="passwordParameter" value="password" />
+		<beans:property name="filterProcessesUrl" value="/ui/loginAction" />
+	</beans:bean>
+
+	<beans:bean id="rememberMeFilter"
+		class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
+		<beans:property name="rememberMeServices" ref="rememberMeServices" />
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+	</beans:bean>
+
+	<bean id="rememberMeAuthenticationProvider"
+		class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+		<beans:property name="key" value="cms_cookies" />
+	</beans:bean>
+		<beans:bean id="rememberMeServices"
+			class="com.cms.web.security.RememberMeServicesImpl">
+			<beans:property name="userDetailsService" ref="myUserDetailsService" />
+			<beans:property name="key" value="cms_cookies" />
+			<beans:property name="parameter" value="rememberMe" />
+			<beans:property name="tokenRepository" ref="myTokenRepository" />
+		</beans:bean>
+		<beans:bean id="myTokenRepository" class="com.cms.web.service.TokenServiceImpl"></beans:bean>
+		<import resource="spring-rmi.xml" />
+
+		<beans:bean id="springContextUtil" class="com.cms.web.util.SpringContextUtil" />
+</beans:beans>
