@@ -10,4 +10,4 @@
 		<!-- 当连接失败时是否刷新远程调用stub -->
 		<property name="refreshStubOnConnectFailure" value="true" />
 	</bean>
-</beans:beans>
+</beans>

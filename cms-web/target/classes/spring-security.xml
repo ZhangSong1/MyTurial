@@ -44,7 +44,6 @@
 		erase-credentials="false">
 		<authentication-provider ref="authenticationProvider" />
 		<authentication-provider ref="rememberMeAuthenticationProvider" />
-	</authentication-provider>
 	</authentication-manager>
 	<beans:bean id="authenticationProvider"
 		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
@@ -92,19 +91,18 @@
 		<beans:property name="authenticationManager" ref="authenticationManager" />
 	</beans:bean>
 
-	<bean id="rememberMeAuthenticationProvider"
+	<beans:bean id="rememberMeAuthenticationProvider"
 		class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
 		<beans:property name="key" value="cms_cookies" />
 	</beans:bean>
-		<beans:bean id="rememberMeServices"
-			class="com.cms.web.security.RememberMeServicesImpl">
-			<beans:property name="userDetailsService" ref="myUserDetailsService" />
-			<beans:property name="key" value="cms_cookies" />
-			<beans:property name="parameter" value="rememberMe" />
-			<beans:property name="tokenRepository" ref="myTokenRepository" />
-		</beans:bean>
-		<beans:bean id="myTokenRepository" class="com.cms.web.service.TokenServiceImpl"></beans:bean>
-		<import resource="spring-rmi.xml" />
+	<beans:bean id="rememberMeServices" class="com.cms.web.security.RememberMeServicesImpl">
+		<beans:property name="userDetailsService" ref="myUserDetailsService" />
+		<beans:property name="key" value="cms_cookies" />
+		<beans:property name="parameter" value="rememberMe" />
+		<beans:property name="tokenRepository" ref="myTokenRepository" />
+	</beans:bean>
+	<beans:bean id="myTokenRepository" class="com.cms.web.service.TokenServiceImpl"></beans:bean>
+	<beans:import resource="spring-rmi.xml" />
 
-		<beans:bean id="springContextUtil" class="com.cms.web.util.SpringContextUtil" />
+	<beans:bean id="springContextUtil" class="com.cms.web.util.SpringContextUtil" />
 </beans:beans>
