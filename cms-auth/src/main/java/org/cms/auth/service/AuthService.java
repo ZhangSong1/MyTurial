@@ -1,6 +1,6 @@
 package org.cms.auth.service;
 
-import org.cms.auth.entity.Token;
+import org.cms.auth.domain.Token;
 
 public interface AuthService
 {

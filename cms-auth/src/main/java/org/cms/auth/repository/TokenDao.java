@@ -1,11 +1,11 @@
-package org.cms.auth.dao;
+package org.cms.auth.repository;
 
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.cms.auth.entity.Token;
-import org.cms.auth.entity.TokenWapper;
+import org.cms.auth.domain.Token;
+import org.cms.auth.domain.TokenWapper;
 import org.cms.auth.exception.SQLFailedException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

@@ -1,4 +1,4 @@
-package org.cms.auth.entity;
+package org.cms.auth.domain;
 
 import java.util.Map;
 

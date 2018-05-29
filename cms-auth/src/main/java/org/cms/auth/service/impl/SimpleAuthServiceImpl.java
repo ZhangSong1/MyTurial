@@ -1,15 +1,17 @@
-package org.cms.auth.service;
+package org.cms.auth.service.impl;
 
 import java.util.Date;
 
 import javax.annotation.Resource;
 
-import org.cms.auth.dao.TokenDao;
-import org.cms.auth.dao.UserDao;
-import org.cms.auth.entity.Token;
-import org.cms.auth.entity.User;
+import org.cms.auth.domain.Token;
+import org.cms.auth.domain.User;
 import org.cms.auth.exception.InvalidDataException;
 import org.cms.auth.exception.UserNotFoundException;
+import org.cms.auth.repository.TokenDao;
+import org.cms.auth.repository.UserDao;
+import org.cms.auth.service.AuthService;
+import org.cms.auth.util.TokenUtils;
 import org.springframework.util.Assert;
 
 import cms.utils.PwdEncode;

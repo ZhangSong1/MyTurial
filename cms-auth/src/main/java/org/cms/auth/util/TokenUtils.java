@@ -1,4 +1,4 @@
-package org.cms.auth.service;
+package org.cms.auth.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.cms.auth.entity.Token;
+import org.cms.auth.domain.Token;
 import org.cms.auth.exception.InvalidDataException;
 import org.springframework.util.Assert;
 
